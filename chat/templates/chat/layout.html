@@ -18,34 +18,46 @@
             crossorigin="anonymous"></script>
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg navbar-dark color" style="background-color: #016064">
-      <div class="container" >
+<nav class="navbar navbar-expand-lg navbar-dark color" style="background-color: #016064">
+    <div class="container">
         <a class="navbar-brand" href="{% url 'chat_home' %}"><strong>Online Chat</strong>
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse"
                 data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
                 aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
+            <span class="navbar-toggler-icon"></span>
         </button>
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent ">
 
-          <ul class="navbar-nav ml-auto">
-            <li class="nav-item">
-              <a class="nav-link" href="#">Registraion</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="{% url 'login-page' %}">Login</a>
-            </li>
-          </ul>
+            <ul class="navbar-nav ml-auto">
+                {% if request.user.is_authenticated %}
+                    <li class="nav-item">
+                        <a class="nav-link">{{ request.user }}</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'logout' %}">Exit</a>
+                    </li>
+                {% else %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'register_page' %}">Registraion</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'login_page' %}">Login</a>
+                    </li>
+                {% endif %}
+
+
+            </ul>
         </div>
-      </div>
-    </nav>
-
-
-    <div class="container">
-        {% block content %}
-        {% endblock %}
     </div>
+</nav>
+
+
+<div class="container">
+    {% block content %}
+    {% endblock %}
+</div>
 </body>
 </html>
