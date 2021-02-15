@@ -1,0 +1,85 @@
+body{
+    background-color: #888888;
+}
+
+.box {
+  margin: 10px auto;
+  background: #00bfb6;
+  padding: 5px;
+  text-align: center;
+  font-weight: 600;
+  color: #fff;
+  font-family: arial;
+  position:relative;
+}
+.bubble {
+  position: absolute;
+  background: slategray;
+  color: white;
+  padding: 6px 10px;
+  border-radius: 5px 0 5px 5px;
+}
+
+.bubble:after {
+  content: '';
+  position: absolute;
+  left: 100%;
+  top: 0;
+  border-top: 8px solid slategray;
+  border-right: 12px solid transparent;
+}
+
+.sb1:before {
+   content: "";
+  width: 0px;
+  height: 0px;
+  position: absolute;
+  border-left: 10px solid transparent;
+  border-right: 10px solid #00bfb6;
+  border-top: 10px solid #00bfb6;
+  border-bottom: 10px solid transparent;
+  left: -19px;
+  top: 6px;
+}
+
+.sb2:before {
+  content: "";
+  width: 0;
+  height: 0;
+  position: absolute;
+  border-left: 10px solid transparent;
+  border-right: 10px solid #00bfb6;
+  border-top: 10px solid #00bfb6;
+  border-bottom: 10px solid transparent;
+  left: -19px;
+  top: 6px;
+}
+
+
+.box3 {
+  border-radius: 15px;
+  background: slategray;
+  color: #fff;
+  padding: 4px;
+  text-align: center;
+  font-weight: 900;
+  font-family: arial;
+  position: relative;
+}
+
+
+/* speech bubble 13 */
+
+.sb13:before {
+  content: "";
+  width: 0px;
+  height: 0px;
+  position: absolute;
+  border-left: 15px solid slategray;
+  border-right: 15px solid transparent;
+  border-top: 15px solid slategray;
+  border-bottom: 15px solid transparent;
+  right: -16px;
+  top: 0px;
+}
+
