@@ -16,6 +16,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"
             integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns"
             crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 <body>
 <nav class="navbar navbar-expand-lg navbar-dark color" style="background-color: #016064">
@@ -33,9 +34,14 @@
             <ul class="navbar-nav ml-auto">
                 {% if request.user.is_authenticated %}
                     <li class="nav-item">
-                        <a class="nav-link">{{ request.user }}</a>
+                        <a class="nav-link">{{ request.user.first_name }}</a>
                     </li>
 
+                    {% if request.user.first_name == 'Admin' %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="/admin">Admin Page</a>
+                    </li>
+                        {% endif %}
                     <li class="nav-item">
                         <a class="nav-link" href="{% url 'logout' %}">Exit</a>
                     </li>

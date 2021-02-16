@@ -5,7 +5,7 @@
 {% endblock %}
 
 {% block content %}
-    <div class="mt-5" >
+    <div class="mt-5">
         <div class="row">
             <div class="col-8 offset-2">
                 <div class="card" style="box-shadow:
@@ -16,93 +16,263 @@
   0 41.8px 33.4px rgba(0, 0, 0, 0.086),
   0 100px 80px rgba(0, 0, 0, 0.12)">
                     <div class="card-header">
-                        Hello chat
+                        {{ message_title }}
                     </div>
                     <div class="card-body" style="height: 400px; overflow: auto">
+                        <div class="" id="user_full_name">
 
-                        <div class="row">
-                            <div class="col-8">
-                                <div class="row">
-                                    <div class="ml-1" style="width: 10%;">
-                                        <img src="https://t4.ftcdn.net/jpg/03/46/93/61/360_F_346936114_RaxE6OQogebgAWTalE1myseY1Hbb5qPM.jpg"
-                                             style="width: 50px; height: 50px; border-radius: 50%">
-                                    </div>
-                                    <div class="col-10">
-                                        <h6>Yerlan Yerzhan</h6>
-                                        <p class="box sb1">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-                                    </div>
-                                </div>
-
-
-                            </div>
                         </div>
-                        <div class="row">
-                            <div class="col-4"></div>
-                            <div class="col-8 d-flex">
-                                <div class="col-10">
-                                    <div class="float-right">
-                                        <h6 class="float-right">It's me</h6><br>
-                                        <div class="box3 sb13">
-                                            Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                                        </div>
-
-                                    </div>
-                                </div>
-                                <div class="ml-1" style="width: 10%;">
-                                        <img src="https://t4.ftcdn.net/jpg/03/46/93/61/360_F_346936114_RaxE6OQogebgAWTalE1myseY1Hbb5qPM.jpg"
-                                             style="width: 50px; height: 50px; border-radius: 50%">
-                                    </div>
-                            </div>
-                        </div>
-                         <div class="row">
-                            <div class="col-8">
-                                <div class="row">
-                                    <div class="ml-1" style="width: 10%;">
-                                        <img src="https://t4.ftcdn.net/jpg/03/46/93/61/360_F_346936114_RaxE6OQogebgAWTalE1myseY1Hbb5qPM.jpg"
-                                             style="width: 50px; height: 50px; border-radius: 50%">
-                                    </div>
-                                    <div class="col-10">
-                                        <h6>Yerlan Yerzhan</h6>
-                                        <p class="box sb1">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-                                    </div>
-                                </div>
-
-
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-8">
-                                <div class="row">
-                                    <div class="ml-1" style="width: 10%;">
-                                        <img src="https://t4.ftcdn.net/jpg/03/46/93/61/360_F_346936114_RaxE6OQogebgAWTalE1myseY1Hbb5qPM.jpg"
-                                             style="width: 50px; height: 50px; border-radius: 50%">
-                                    </div>
-                                    <div class="col-10">
-                                        <h6>Yerlan Yerzhan</h6>
-                                        <p class="box sb1">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-                                    </div>
-                                </div>
-
-
-                            </div>
-                        </div>
-
-
+                        {#                        {% for el in messages %}#}
+                        {#                            {% if el.user != request.user %}#}
+                        {#                                <div class="row">#}
+                        {#                                    <div class="col-8">#}
+                        {#                                        <div class="row">#}
+                        {#                                            <div class="ml-1" style="width: 10%;">#}
+                        {#                                                <img src="https://t4.ftcdn.net/jpg/03/46/93/61/360_F_346936114_RaxE6OQogebgAWTalE1myseY1Hbb5qPM.jpg"#}
+                        {#                                                     style="width: 50px; height: 50px; border-radius: 50%">#}
+                        {#                                            </div>#}
+                        {#                                            <div class="col-10">#}
+                        {#                                                <h6>{{ el.user.first_name }} {{ el.user.last_name }}</h6>#}
+                        {#                                                <p class="box sb1">{{ el.message_text }}</p>#}
+                        {#                                            </div>#}
+                        {#                                        </div>#}
+                        {#                                    </div>#}
+                        {#                                </div>#}
+                        {#                            {% else %}#}
+                        {#                                <div class="row">#}
+                        {#                                    <div class="col-4"></div>#}
+                        {#                                    <div class="col-8 d-flex">#}
+                        {#                                        <div class="col-10">#}
+                        {#                                            <div class="float-right">#}
+                        {#                                                <h6 class="float-right"><div id="user_full_name"></div></h6>#}
+                        {#                                                <br>#}
+                        {#                                                <div class="box3" id="message_div">#}
+                        {#                                                </div>#}
+                        {##}
+                        {#                                            </div>#}
+                        {#                                        </div>#}
+                        {#                                        <div class="ml-1" style="width: 10%;">#}
+                        {#                                            <img src="https://t4.ftcdn.net/jpg/03/46/93/61/360_F_346936114_RaxE6OQogebgAWTalE1myseY1Hbb5qPM.jpg"#}
+                        {#                                                 style="width: 50px; height: 50px; border-radius: 50%">#}
+                        {#                                        </div>#}
+                        {#                                    </div>#}
+                        {#                                </div>#}
+                        {#                            {% endif %}#}
+                        {##}
+                        {#                        {% endfor %}#}
+                        {#                        <div class="row">#}
+                        {#                            <div class="col-4"></div>#}
+                        {#                            <div class="col-8 d-flex">#}
+                        {#                                <div class="col-10">#}
+                        {#                                    <div class="float-right">#}
+                        {#                                        <h6 class="float-right">It's me</h6><br>#}
+                        {#                                        <div class="box3 sb13">#}
+                        {#                                            Lorem ipsum dolor sit amet, consectetur adipisicing elit.#}
+                        {#                                        </div>#}
+                        {##}
+                        {#                                    </div>#}
+                        {#                                </div>#}
+                        {#                                <div class="ml-1" style="width: 10%;">#}
+                        {#                                    <img src="https://t4.ftcdn.net/jpg/03/46/93/61/360_F_346936114_RaxE6OQogebgAWTalE1myseY1Hbb5qPM.jpg"#}
+                        {#                                         style="width: 50px; height: 50px; border-radius: 50%">#}
+                        {#                                </div>#}
+                        {#                            </div>#}
+                        {#                        </div>#}
+                        {#                        <div class="row">#}
+                        {#                            <div class="col-8">#}
+                        {#                                <div class="row">#}
+                        {#                                    <div class="ml-1" style="width: 10%;">#}
+                        {#                                        <img src="https://t4.ftcdn.net/jpg/03/46/93/61/360_F_346936114_RaxE6OQogebgAWTalE1myseY1Hbb5qPM.jpg"#}
+                        {#                                             style="width: 50px; height: 50px; border-radius: 50%">#}
+                        {#                                    </div>#}
+                        {#                                    <div class="col-10">#}
+                        {#                                        <h6>Yerlan Yerzhan</h6>#}
+                        {#                                        <p class="box sb1">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>#}
+                        {#                                    </div>#}
+                        {#                                </div>#}
+                        {##}
+                        {##}
+                        {#                            </div>#}
+                        {#                        </div>#}
+                        {#                        <div class="row">#}
+                        {#                            <div class="col-8">#}
+                        {#                                <div class="row">#}
+                        {#                                    <div class="ml-1" style="width: 10%;">#}
+                        {#                                        <img src="https://t4.ftcdn.net/jpg/03/46/93/61/360_F_346936114_RaxE6OQogebgAWTalE1myseY1Hbb5qPM.jpg"#}
+                        {#                                             style="width: 50px; height: 50px; border-radius: 50%">#}
+                        {#                                    </div>#}
+                        {#                                    <div class="col-10">#}
+                        {#                                        <h6>Yerlan Yerzhan</h6>#}
+                        {#                                        <p class="box sb1">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>#}
+                        {#                                    </div>#}
+                        {#                                </div>#}
+                        {##}
+                        {##}
+                        {#                            </div>#}
+                        {#                        </div>#}
 
 
                     </div>
-                    <div class="card-footer">
+                    <div class="card-footer" style="background-color: #6DDCBD">
                         <div class="row">
                             <div class="col-12 d-flex">
                                 <button class="btn btn-outline"><i class="fas fa-paperclip mt-2 mr-1"></i></button>
-                                <textarea cols="50" rows="1" class="form-control"></textarea>
-                                <button class=" ml-1 btn btn-primary">Send></button>
-                            </div>
+                                <form action="" method="post" id="form_msg">
+                                    {% csrf_token %}
+                                    <div class="d-flex">
+                                        <textarea cols="50" rows="1" class="form-control"
+                                                  name="message_text" id="baton_hleba"></textarea>
+                                        <button type="button" class=" ml-1 btn btn-primary" onclick="msg_sender()" >
 
+                                            Send>
+
+                                        </button>
+
+                                    </div>
+                                </form>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+
+    <script>
+        function msg_sender() {
+
+            console.log('ewr');
+            var url = "{% url 'msg_send' message_title.id request.user.id %}";
+
+            {#alert(url)#}
+            $.post({
+                url: url,
+                data: $("#form_msg").serialize(),
+                success: function (data) {
+
+                    console.log(data)
+                    var pay = $('#user_full_name')
+                    pay.html('')
+                    pay.append('')
+                    for (var i = 0; i < data.message.length; i++) {
+                        if (data.message[i].user.id !==  data.user_id[i]) {
+                            pay.append('<div class="row">' +
+                                '<div class="col-8"> ' +
+                                '<div class="row"> ' +
+                                '<div class="ml-1" style="width: 10%;"> ' +
+                                '<img src="https://t4.ftcdn.net/jpg/03/46/93/61/360_F_346936114_RaxE6OQogebgAWTalE1myseY1Hbb5qPM.jpg"' +
+                                'style="width: 50px; height: 50px; border-radius: 50%"> ' +
+                                '</div> ' +
+                                '<div class="col-10"> ' +
+                                '<h6>' + data.message[i].user__first_name + ' ' + data.message[i].user__last_name + '</h6> ' +
+                                '<p class="box sb1">' + data.message[i].message_text +
+                                '</p> ' +
+                                '</div> ' +
+                                '</div> ' +
+                                '</div> ' +
+                                '</div>')
+                        } else {
+                            pay.append('<div class="row">' +
+                                '<div class="col-4"></div>\n' +
+                                '<div class="col-8 d-flex">\n' +
+                                '<div class="col-10">\n' +
+                                '<div class="float-right">\n' +
+                                '<h6 class="float-right"><div id="user_full_name">' + data.message[i].user__first_name + ' ' + data.message[i].user__last_name + '</div></h6>\n' +
+                                '<br>\n' +
+                                '<div class="box3" id="message_div">\n' + data.message[i].message_text +
+                                '</div>\n' +
+                                '</div>\n' +
+                                '</div>\n' +
+                                '<div class="ml-1" style="width: 10%;">\n' +
+                                '<img src="https://t4.ftcdn.net/jpg/03/46/93/61/360_F_346936114_RaxE6OQogebgAWTalE1myseY1Hbb5qPM.jpg"\n' +
+                                'style="width: 50px; height: 50px; border-radius: 50%">\n' +
+                                '</div>\n' +
+                                '</div>\n' +
+                                '</div>')
+                        }
+                    }
+
+
+                },
+                error: function (data) {
+                    alert("Введите текст нормально 667!")
+                }
+            });
+            $('#baton_hleba').val('');
+        }
+
+
+         function get_msg_sender() {
+            console.log('ewr')
+            var url = "{% url 'msg_send' message_title.id request.user.id %}";
+
+
+            {#alert(url)#}
+            $.get({
+                url: url,
+                data: $("#form_msg").serialize(),
+                success: function (data) {
+
+                    console.log(data)
+                    var pay = $('#user_full_name')
+                    pay.html('')
+                    pay.append('')
+                    for (var i = 0; i < data.message.length; i++) {
+                        console.log(data.message[i].user.id)
+                        console.log( {{ request.user.id }})
+                        if (data.message[i].user.id !== data.user_id[i]) {
+                            pay.append( '<div class="row">' +
+                                '<div class="col-8"> ' +
+                                '<div class="row"> ' +
+                                '<div class="ml-1" style="width: 10%;"> ' +
+                                '<img src="https://t4.ftcdn.net/jpg/03/46/93/61/360_F_346936114_RaxE6OQogebgAWTalE1myseY1Hbb5qPM.jpg"' +
+                                'style="width: 50px; height: 50px; border-radius: 50%"> ' +
+                                '</div> ' +
+                                '<div class="col-10"> ' +
+                                '<h6>' + data.message[i].user__first_name + ' ' + data.message[i].user__last_name + '</h6> ' +
+                                '<p class="box sb1">' + data.message[i].message_text +
+                                '</p> ' +
+                                '</div> ' +
+                                '</div> ' +
+                                '</div> ' +
+                                '</div>')
+                        } else {
+                            pay.append('<div class="row">' +
+                                '<div class="col-4"></div>\n' +
+                                '<div class="col-8 d-flex">\n' +
+                                '<div class="col-10">\n' +
+                                '<div class="float-right">\n' +
+                                '<h6 class="float-right"><div id="user_full_name">' + data.message[i].user__first_name + ' ' + data.message[i].user__last_name + '</div></h6>\n' +
+                                '<br>\n' +
+                                '<div class="box3" id="message_div">\n' + data.message[i].message_text +
+                                '</div>\n' +
+                                '</div>\n' +
+                                '</div>\n' +
+                                '<div class="ml-1" style="width: 10%;">\n' +
+                                '<img src="https://t4.ftcdn.net/jpg/03/46/93/61/360_F_346936114_RaxE6OQogebgAWTalE1myseY1Hbb5qPM.jpg"\n' +
+                                'style="width: 50px; height: 50px; border-radius: 50%">\n' +
+                                '</div>\n' +
+                                '</div>\n' +
+                                '</div>')
+                        }
+                    }
+
+
+                },
+                error: function (data) {
+                    alert("Введите текст нормально 667!")
+                }
+            });
+            $('#baton_hleba').val('');
+        }
+
+
+        $(document).ready(function () {
+            get_msg_sender()
+        })
+    </script>
+
+
+
+
 {% endblock %}

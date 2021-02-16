@@ -2,7 +2,7 @@ from django import forms
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth.models import User
 from django.forms import ModelForm, TextInput, DateTimeInput, Textarea, PasswordInput
-
+from .models import *
 
 class AuthUserForm(AuthenticationForm, forms.ModelForm):
     class Meta:
@@ -29,7 +29,7 @@ class AuthUserForm(AuthenticationForm, forms.ModelForm):
 class RegisterUserForm(forms.ModelForm):
     class Meta:
         model=User
-        fields=('username', 'password')
+        fields=('username', 'password', 'first_name', 'last_name')
 
         widgets={
             "username":TextInput(attrs={
@@ -39,6 +39,14 @@ class RegisterUserForm(forms.ModelForm):
             "password": PasswordInput(attrs={
                 'class': 'form-control',
                 'placeholder': 'password...'
+            }),
+            "first_name": TextInput(attrs={
+                'class': 'form-control',
+                'placeholder': 'first_name...'
+            }),
+            "last_name": TextInput(attrs={
+                'class': 'form-control',
+                'placeholder': 'last_name...'
             })
         }
 
@@ -47,4 +55,6 @@ class RegisterUserForm(forms.ModelForm):
         user.set_password(self.cleaned_data["password"])
         if commit:
             user.save()
+            # person = Person.objects.create(user=user)
+            # person.save()
         return user
