@@ -57,66 +57,67 @@
         function msg_sender() {
             console.log('ewr');
             var url = "{% url 'msg_send' message_title.id request.user.id %}";
+            if ($("#message_text").val().trim().length > 0) {
+                $.post({
+                    url: url,
+                    data: $("#form_msg").serialize(),
+                    success: function (data) {
 
-            {#alert(url)#}
-            $.post({
-                url: url,
-                data: $("#form_msg").serialize(),
-                success: function (data) {
+                        console.log(data)
+                        var pay = $('#user_full_name')
+                        pay.html('')
+                        pay.append('')
 
-                    console.log(data)
-                    var pay = $('#user_full_name')
-                    pay.html('')
-                    pay.append('')
+                        for (var i = 0; i < data.message.length; i++) {
+                            if (data.message[i].user !== data.user_id) {
 
-                    for (var i = 0; i < data.message.length; i++) {
-                        if (data.message[i].user !== data.user_id) {
-
-                            pay.append('<div class="row">' +
-                                '<div class="col-8"> ' +
-                                '<div class="row"> ' +
-                                '<div class="ml-1" style="width: 10%;"> ' +
-                                '<img src="https://t4.ftcdn.net/jpg/03/46/93/61/360_F_346936114_RaxE6OQogebgAWTalE1myseY1Hbb5qPM.jpg"' +
-                                'style="width: 50px; height: 50px; border-radius: 50%"> ' +
-                                '</div> ' +
-                                '<div class="col-10"> ' +
-                                '<h6>' + data.message[i].user__first_name + ' ' + data.message[i].user__last_name + '</h6> ' +
-                                '<p class="box sb1">' + data.message[i].message_text +
-                                '</p> ' +
-                                '<p>' + data.message[i].date +
-                                '</p>' +
-                                '</div> ' +
-                                '</div> ' +
-                                '</div> ' +
-                                '</div>')
-                        } else {
-                            pay.append('<div class="row">' +
-                                '<div class="col-4"></div>\n' +
-                                '<div class="col-8 d-flex">\n' +
-                                '<div class="col-10">\n' +
-                                '<div class="float-right">\n' +
-                                '<h6 class="float-right"><div id="user_full_name">' + data.message[i].user__first_name + ' ' + data.message[i].user__last_name + '</div></h6>\n' +
-                                '<br>\n' +
-                                '<div class="box3" id="message_div">\n' + data.message[i].message_text +
-                                '</div>\n' +
+                                pay.append('<div class="row">' +
+                                    '<div class="col-8"> ' +
+                                    '<div class="row"> ' +
+                                    '<div class="ml-1" style="width: 10%;"> ' +
+                                    '<img src="https://t4.ftcdn.net/jpg/03/46/93/61/360_F_346936114_RaxE6OQogebgAWTalE1myseY1Hbb5qPM.jpg"' +
+                                    'style="width: 50px; height: 50px; border-radius: 50%"> ' +
+                                    '</div> ' +
+                                    '<div class="col-10"> ' +
+                                    '<h6>' + data.message[i].user__first_name + ' ' + data.message[i].user__last_name + '</h6> ' +
+                                    '<p class="box sb1">' + data.message[i].message_text +
+                                    '</p> ' +
                                     '<p>' + data.message[i].date +
-                                '</p>' +
-                                '</div>\n' +
-                                '</div>\n' +
-                                '<div class="ml-1" style="width: 10%;">\n' +
-                                '<img src="https://t4.ftcdn.net/jpg/03/46/93/61/360_F_346936114_RaxE6OQogebgAWTalE1myseY1Hbb5qPM.jpg"\n' +
-                                'style="width: 50px; height: 50px; border-radius: 50%">\n' +
-                                '</div>\n' +
-                                '</div>\n' +
-                                '</div>')
+                                    '</p>' +
+                                    '</div> ' +
+                                    '</div> ' +
+                                    '</div> ' +
+                                    '</div>')
+                            } else {
+                                pay.append('<div class="row">' +
+                                    '<div class="col-4"></div>\n' +
+                                    '<div class="col-8 d-flex">\n' +
+                                    '<div class="col-10">\n' +
+                                    '<div class="float-right">\n' +
+                                    '<h6 class="float-right"><div id="user_full_name">' + data.message[i].user__first_name + ' ' + data.message[i].user__last_name + '</div></h6>\n' +
+                                    '<br>\n' +
+                                    '<div class="box3" id="message_div">\n' + data.message[i].message_text +
+                                    '</div>\n' +
+                                    '<p>' + data.message[i].date +
+                                    '</p>' +
+                                    '</div>\n' +
+                                    '</div>\n' +
+                                    '<div class="ml-1" style="width: 10%;">\n' +
+                                    '<img src="https://t4.ftcdn.net/jpg/03/46/93/61/360_F_346936114_RaxE6OQogebgAWTalE1myseY1Hbb5qPM.jpg"\n' +
+                                    'style="width: 50px; height: 50px; border-radius: 50%">\n' +
+                                    '</div>\n' +
+                                    '</div>\n' +
+                                    '</div>')
+                            }
+                            $('#baton').prop('disabled', true);
                         }
-                        $('#baton').prop('disabled', true);
+
                     },
                     error: function (data) {
                         alert("Введите текст нормально 6!")
                     }
                 });
-        }
+            }
             $('#message_text').val('');
         }
 
@@ -189,7 +190,7 @@
 
         $(document).ready(function () {
             get_msg_sender();
-            setInterval(get_msg_sender, 1000);
+            {#setInterval(get_msg_sender, 1000);#}
 
             var buttonDisabled = false;
             $('#baton').prop('disabled', true);
