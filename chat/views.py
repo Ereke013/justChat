@@ -1,7 +1,7 @@
 import datetime
 
 from django.contrib.auth.models import User
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.contrib.auth.views import LoginView, LogoutView
 from .models import *
 # Create your views here.
@@ -11,10 +11,13 @@ from chat.forms import AuthUserForm, RegisterUserForm
 
 
 def index(request):
-    messages = Message.objects.all()
+    if request.user.is_authenticated:
+        messages = Message.objects.all()
     # message_title=Group.objects.all()
-    message_title=Group.objects.get(id=1)
-    return render(request, 'chat/index.html', {'messages': messages, 'message_title':message_title})
+        message_title=Group.objects.get(id=1)
+        return render(request, 'chat/index.html', {'messages': messages, 'message_title':message_title})
+    else:
+        return redirect('login_page')
 
 class MyProjectLoginView(LoginView):
     template_name = 'chat/login.html'
@@ -45,6 +48,8 @@ def MessageSendView(request, pk, id):
 
 
     message = list(Message.objects.filter( group=group).order_by("date").values('date', 'user__first_name', 'user__last_name', 'message_text', "user"))
-    user_id = []
-    user_id.append(request.user.id)
+    user_id =request.user.id
+
     return JsonResponse({'message': message, 'user_id':user_id}, safe=True, status=200)
+
+
