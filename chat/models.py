@@ -7,10 +7,21 @@ class Group(models.Model):
     def __str__(self):
         return self.name
 
+class Person(models.Model):
+    user = models.OneToOneField(User, primary_key=True, on_delete=models.PROTECT)
+    group = models.ForeignKey(Group, on_delete=models.CASCADE, null=True, blank=True)
+
+    def __str__(self):
+        return self.user.username
+
+    class Meta:
+        verbose_name = 'пользователь'
+        verbose_name_plural = 'пользователи'
 
 class Message(models.Model):
     group = models.ForeignKey(Group, on_delete=models.CASCADE)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
+    person = models.ForeignKey(Person, on_delete=models.CASCADE, null=True)
     date = models.DateTimeField(null=True, blank=True)
     message_text = models.TextField("Message text")
 
@@ -18,15 +29,7 @@ class Message(models.Model):
         return self.message_text
 
 
-# class Person(models.Model):
-#     user = models.OneToOneField(User, primary_key=True, on_delete=models.PROTECT)
-#     name = models.CharField("full name", max_length=50, null=True, blank=True)
-#     group = models.ForeignKey(Group, on_delete=models.CASCADE, null=True, blank=True)
-#     user_ava = models.CharField("User Photo", max_length= 250, null=True, blank=True)
-#
-#     def __str__(self):
-#         return self.user.username
-#
-#     class Meta:
-#         verbose_name = 'пользователь'
-#         verbose_name_plural = 'пользователи'
+# class CustomUser(AbstractUser):
+
+
+
