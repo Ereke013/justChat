@@ -2,6 +2,8 @@ from django import forms
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth.models import User
 from django.forms import ModelForm, TextInput, DateTimeInput, Textarea, PasswordInput
+from django.shortcuts import redirect
+
 from .models import *
 
 class AuthUserForm(AuthenticationForm, forms.ModelForm):
@@ -55,6 +57,5 @@ class RegisterUserForm(forms.ModelForm):
         user.set_password(self.cleaned_data["password"])
         if commit:
             user.save()
-            # person = Person.objects.create(user=user)
-            # person.save()
-        return user
+            person = Person.objects.create(user=user, group_id=1)
+            person.save()
